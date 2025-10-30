@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-import kagglehub  # <— using KaggleHub in Colab
+import kagglehub  
 
 # 1) Load / prepare data
 
@@ -21,7 +21,6 @@ def load_data():
     path = kagglehub.dataset_download("ranitsarkar01/porter-delivery-time-estimation")
     print("Path to dataset files:", path)
 
-    # Prefer "dataset 2.csv" if present; otherwise pick the first CSV in the folder
     preferred = os.path.join(path, "dataset 2.csv")
     if os.path.exists(preferred):
         csv_path = preferred
@@ -32,7 +31,7 @@ def load_data():
         csv_path = candidates[0]
         print(f"Using CSV file: {os.path.basename(csv_path)}")
 
-    # Load dataset
+     Load dataset
     df = pd.read_csv(csv_path)
 
     # Parse timestamps and compute delivery duration (minutes)
